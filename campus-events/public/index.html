@@ -20,6 +20,18 @@
       <h1>Upcoming events</h1>
       <p>Find out what student clubs are planning and sign up for the events you like.</p>
 
+      <!-- The filter only changes the URL (?category=...). Nothing evaluates it yet. -->
+      <form method="get">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option value="">All categories</option>
+          <option value="outdoor">Outdoor</option>
+          <option value="photography">Photography</option>
+          <option value="tech">Tech</option>
+        </select>
+        <button type="submit">Filter events</button>
+      </form>
+
       <article>
         <h2>Photo Walk Through the Old Town</h2>
         <p>

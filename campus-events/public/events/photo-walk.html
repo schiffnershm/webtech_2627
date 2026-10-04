@@ -39,6 +39,34 @@
           <dt>Spots</dt>
           <dd>20 (8 left)</dd>
         </dl>
+
+        <h2>Sign up</h2>
+        <!-- POST to a static server: python3 -m http.server answers with 501. -->
+        <form action="/registrations" method="post">
+          <p>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+          </p>
+          <p>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </p>
+          <p>
+            <label for="program">Study program</label>
+            <select id="program" name="program">
+              <option value="computer-science">Computer Science</option>
+              <option value="business-informatics">Business Informatics</option>
+              <option value="design">Design</option>
+              <option value="other">Other</option>
+            </select>
+          </p>
+          <p>
+            <input id="privacy" name="privacy" type="checkbox" required>
+            <label for="privacy">I agree that my name and email are shared with the organizer.</label>
+          </p>
+          <input type="hidden" name="event" value="photo-walk">
+          <button type="submit">Sign up</button>
+        </form>
       </article>
 
       <p><a href="../index.html">Back to all events</a></p>
