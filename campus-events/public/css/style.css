@@ -6,10 +6,22 @@
   --color-text: #1f2937;
   --color-muted: #6b7280;
   --color-background: #f6f7f9;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-badge: #dbeafe;
+  --color-badge-text: #1e3a8a;
+  --radius: 0.75rem;
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   font-family: var(--font-body);
   line-height: 1.6;
   color: var(--color-text);
@@ -33,7 +45,124 @@ a:hover {
   color: var(--color-primary-dark);
 }
 
-footer {
+/* Page frame */
+
+.site-header {
+  padding: 1rem;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.site-name a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.site-footer {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
   color: var(--color-muted);
   font-size: 0.875rem;
+  text-align: center;
+}
+
+/* Events */
+
+.event-card {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.event-card h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.event-meta {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 0.125rem 0.75rem;
+  border-radius: 999px;
+  background-color: var(--color-badge);
+  color: var(--color-badge-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+}
+
+/* Event details and signup */
+
+.event-detail {
+  padding: 2rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.form-field label {
+  display: block;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  font: inherit;
+}
+
+/* Clubs */
+
+.club-list {
+  padding: 0;
+  list-style: none;
+}
+
+.club-card {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.club-card h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
 }

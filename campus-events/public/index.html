@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <header>
-      <p>Campus Events</p>
-      <nav>
+    <header class="site-header">
+      <p class="site-name"><a href="index.html">Campus Events</a></p>
+      <nav class="site-nav">
         <ul>
-          <li>Events</li>
+          <li><a href="index.html">Events</a></li>
           <li><a href="clubs.html">Clubs</a></li>
         </ul>
       </nav>
@@ -22,7 +22,7 @@
       <p>Find out what student clubs are planning and sign up for the events you like.</p>
 
       <!-- The filter only changes the URL (?category=...). Nothing evaluates it yet. -->
-      <form method="get">
+      <form class="filter-form" method="get">
         <label for="category">Category</label>
         <select id="category" name="category">
           <option value="">All categories</option>
@@ -30,33 +30,35 @@
           <option value="photography">Photography</option>
           <option value="tech">Tech</option>
         </select>
-        <button type="submit">Filter events</button>
+        <button class="button" type="submit">Filter events</button>
       </form>
 
-      <article>
-        <h2>Photo Walk Through the Old Town</h2>
-        <p>
-          <time datetime="2026-10-24T15:00">Saturday, 24 October 2026, 3:00 pm</time>
-          · Marienplatz
-        </p>
-        <p>Category: Photography</p>
-        <p>Capture the old town in the late afternoon light. All cameras welcome, smartphones included.</p>
-        <p><a href="events/photo-walk.html">View details</a></p>
-      </article>
+      <div class="event-list">
+        <article class="event-card">
+          <h2>Photo Walk Through the Old Town</h2>
+          <p class="event-meta">
+            <time datetime="2026-10-24T15:00">Saturday, 24 October 2026, 3:00 pm</time>
+            · Marienplatz
+          </p>
+          <p><span class="category-badge">Photography</span></p>
+          <p>Capture the old town in the late afternoon light. All cameras welcome, smartphones included.</p>
+          <p><a class="button" href="events/photo-walk.html">View details</a></p>
+        </article>
 
-      <article>
-        <h2>Day Hike to the Herzogstand</h2>
-        <p>
-          <time datetime="2026-11-07T08:00">Saturday, 7 November 2026, 8:00 am</time>
-          · Munich Central Station
-        </p>
-        <p>Category: Outdoor</p>
-        <p>A moderate hike with views over Lake Walchensee. We travel together by train.</p>
-        <p><a href="events/hiking-trip.html">View details</a></p>
-      </article>
+        <article class="event-card">
+          <h2>Day Hike to the Herzogstand</h2>
+          <p class="event-meta">
+            <time datetime="2026-11-07T08:00">Saturday, 7 November 2026, 8:00 am</time>
+            · Munich Central Station
+          </p>
+          <p><span class="category-badge">Outdoor</span></p>
+          <p>A moderate hike with views over Lake Walchensee. We travel together by train.</p>
+          <p><a class="button" href="events/hiking-trip.html">View details</a></p>
+        </article>
+      </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p>Campus Events – a sample project for the course Web Technologies</p>
     </footer>
   </body>

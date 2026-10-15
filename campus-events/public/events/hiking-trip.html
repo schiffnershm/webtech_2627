@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
-    <header>
-      <p>Campus Events</p>
-      <nav>
+    <header class="site-header">
+      <p class="site-name"><a href="../index.html">Campus Events</a></p>
+      <nav class="site-nav">
         <ul>
           <li><a href="../index.html">Events</a></li>
           <li><a href="../clubs.html">Clubs</a></li>
@@ -18,7 +18,7 @@
     </header>
 
     <main>
-      <article>
+      <article class="event-detail">
         <h1>Day Hike to the Herzogstand</h1>
         <img src="../images/hiking-trip.jpg" width="600" height="338"
              alt="Illustration of a mountain range with a snowy peak above a green valley">
@@ -30,7 +30,7 @@
         </p>
 
         <h2>Details</h2>
-        <dl>
+        <dl class="event-facts">
           <dt>Date</dt>
           <dd><time datetime="2026-11-07T08:00">Saturday, 7 November 2026, 8:00 am</time></dd>
           <dt>Meeting point</dt>
@@ -42,16 +42,16 @@
         </dl>
 
         <h2>Sign up</h2>
-        <form action="/registrations" method="post">
-          <p>
+        <form class="signup-form" action="/registrations" method="post">
+          <p class="form-field">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" required>
           </p>
-          <p>
+          <p class="form-field">
             <label for="email">Email</label>
             <input id="email" name="email" type="email" required>
           </p>
-          <p>
+          <p class="form-field">
             <label for="program">Study program</label>
             <select id="program" name="program">
               <option value="computer-science">Computer Science</option>
@@ -60,19 +60,19 @@
               <option value="other">Other</option>
             </select>
           </p>
-          <p>
+          <p class="form-check">
             <input id="privacy" name="privacy" type="checkbox" required>
             <label for="privacy">I agree that my name and email are shared with the organizer.</label>
           </p>
           <input type="hidden" name="event" value="hiking-trip">
-          <button type="submit">Sign up</button>
+          <button class="button" type="submit">Sign up</button>
         </form>
       </article>
 
       <p><a href="../index.html">Back to all events</a></p>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p>Campus Events – a sample project for the course Web Technologies</p>
     </footer>
   </body>
