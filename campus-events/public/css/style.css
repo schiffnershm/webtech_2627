@@ -1,0 +1,39 @@
+/* Campus Events – stylesheet */
+
+:root {
+  --color-primary: #1d4ed8;
+  --color-primary-dark: #1e3a8a;
+  --color-text: #1f2937;
+  --color-muted: #6b7280;
+  --color-background: #f6f7f9;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+}
+
+h1 {
+  color: var(--color-primary-dark);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+footer {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
