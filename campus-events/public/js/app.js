@@ -1,6 +1,6 @@
 // Campus Events – JavaScript
 // Step 11: the event data as an array of objects, filtered in the console.
-// Nothing changes on the page yet – that comes with the DOM in step 12.
+// Step 12: find the event cards on the page and read their category.
 
 const events = [
   {
@@ -40,4 +40,14 @@ console.log(`Campus Events: ${events.length} events loaded`);
 
 for (const event of filterByCategory(events, "outdoor")) {
   console.log(describe(event));
+}
+
+// Step 12: the event cards on the page
+const cards = document.querySelectorAll(".event-card");
+
+console.log(`${cards.length} event cards on the page`);
+
+for (const card of cards) {
+  const title = card.querySelector("h2").textContent;
+  console.log(`${card.dataset.category}: ${title}`);
 }
