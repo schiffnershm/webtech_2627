@@ -1,6 +1,7 @@
 // Campus Events – JavaScript
 // Step 11: the event data as an array of objects, filtered in the console.
 // Step 12: find the event cards on the page and read their category.
+// Step 13: the category filter works on the page.
 
 const events = [
   {
@@ -51,3 +52,34 @@ for (const card of cards) {
   const title = card.querySelector("h2").textContent;
   console.log(`${card.dataset.category}: ${title}`);
 }
+
+// Step 13: the category filter
+const filterForm = document.querySelector(".filter-form");
+const categorySelect = document.querySelector("#category");
+const emptyMessage = document.querySelector(".empty-state");
+
+// Shows only the cards of a category – or all cards for an empty category
+function showCategory(category) {
+  let visibleCount = 0;
+
+  for (const card of cards) {
+    const matches = category === "" || card.dataset.category === category;
+    card.hidden = !matches;
+    if (matches) {
+      visibleCount++;
+    }
+  }
+
+  emptyMessage.hidden = visibleCount > 0;
+}
+
+// Filter as soon as a category is selected
+categorySelect.addEventListener("change", (event) => {
+  showCategory(event.target.value);
+});
+
+// The button still works – but without reloading the page
+filterForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  showCategory(categorySelect.value);
+});
