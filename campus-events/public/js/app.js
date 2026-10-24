@@ -1,6 +1,7 @@
 // Campus Events – JavaScript
 // Step 14: the event data comes from the server instead of an array in this file.
 // Step 15: the cards are created from the data, and the filter works with the data.
+// Step 16: a loading message and error handling.
 // Start the server with: node server.js
 
 let events = [];
@@ -9,10 +10,18 @@ const eventList = document.querySelector(".event-list");
 const filterForm = document.querySelector(".filter-form");
 const categorySelect = document.querySelector("#category");
 const emptyMessage = document.querySelector(".empty-state");
+const loadingMessage = document.querySelector(".loading-message");
+const errorMessage = document.querySelector(".error-message");
 
-// Loads the events from the server
+// Loads the events from the server.
+// Try "/api/events?delay=2000" for a slow server or "/api/broken" for an error.
+const API_URL = "/api/events";
+
 async function loadEvents() {
-  const response = await fetch("/api/events");
+  const response = await fetch(API_URL);
+  if (!response.ok) {
+    throw new Error(`Server responded with status ${response.status}`);
+  }
   const data = await response.json();
   return data;
 }
@@ -82,8 +91,16 @@ filterForm.addEventListener("submit", (event) => {
 });
 
 async function init() {
-  events = await loadEvents();
-  renderEvents(events);
+  loadingMessage.hidden = false;
+  try {
+    events = await loadEvents();
+    renderEvents(events);
+  } catch (error) {
+    console.error(error);
+    errorMessage.hidden = false;
+  } finally {
+    loadingMessage.hidden = true;
+  }
 }
 
 init();

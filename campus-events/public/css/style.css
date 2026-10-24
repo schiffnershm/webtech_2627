@@ -10,6 +10,7 @@
   --color-border: #e5e7eb;
   --color-badge: #dbeafe;
   --color-badge-text: #1e3a8a;
+  --color-error: #b91c1c;
   --radius: 0.75rem;
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
@@ -170,6 +171,11 @@ main {
 .status-message {
   color: var(--color-muted);
   font-style: italic;
+}
+
+.error-message {
+  color: var(--color-error);
+  font-style: normal;
 }
 
 /* Event details and signup */
