@@ -34,29 +34,12 @@
         <button class="button" type="submit">Filter events</button>
       </form>
 
-      <div class="event-list">
-        <article class="event-card" data-category="photography">
-          <h2>Photo Walk Through the Old Town</h2>
-          <p class="event-meta">
-            <time datetime="2026-10-24T15:00">Saturday, 24 October 2026, 3:00 pm</time>
-            · Marienplatz
-          </p>
-          <p><span class="category-badge">Photography</span></p>
-          <p>Capture the old town in the late afternoon light. All cameras welcome, smartphones included.</p>
-          <p><a class="button" href="events/photo-walk.html">View details</a></p>
-        </article>
+      <!-- The cards are created by js/app.js from the data in data/events.json -->
+      <div class="event-list"></div>
 
-        <article class="event-card" data-category="outdoor">
-          <h2>Day Hike to the Herzogstand</h2>
-          <p class="event-meta">
-            <time datetime="2026-11-07T08:00">Saturday, 7 November 2026, 8:00 am</time>
-            · Munich Central Station
-          </p>
-          <p><span class="category-badge">Outdoor</span></p>
-          <p>A moderate hike with views over Lake Walchensee. We travel together by train.</p>
-          <p><a class="button" href="events/hiking-trip.html">View details</a></p>
-        </article>
-      </div>
+      <noscript>
+        <p class="status-message">Please enable JavaScript to see the events.</p>
+      </noscript>
 
       <p class="empty-state" hidden>No events in this category yet.</p>
     </main>

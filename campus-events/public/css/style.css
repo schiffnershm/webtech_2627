@@ -166,6 +166,12 @@ main {
   color: #ffffff;
 }
 
+.empty-state,
+.status-message {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
 /* Event details and signup */
 
 .event-detail {

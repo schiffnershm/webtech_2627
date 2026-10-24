@@ -1,8 +1,14 @@
 // Campus Events – JavaScript
 // Step 14: the event data comes from the server instead of an array in this file.
+// Step 15: the cards are created from the data, and the filter works with the data.
 // Start the server with: node server.js
 
 let events = [];
+
+const eventList = document.querySelector(".event-list");
+const filterForm = document.querySelector(".filter-form");
+const categorySelect = document.querySelector("#category");
+const emptyMessage = document.querySelector(".empty-state");
 
 // Loads the events from the server
 async function loadEvents() {
@@ -19,25 +25,51 @@ function filterByCategory(list, category) {
   return list.filter((event) => event.category === category);
 }
 
-// The event cards on the page – still written by hand in index.html
-const cards = document.querySelectorAll(".event-card");
-const filterForm = document.querySelector(".filter-form");
-const categorySelect = document.querySelector("#category");
-const emptyMessage = document.querySelector(".empty-state");
+// Creates the card for one event – with textContent, never innerHTML
+function createCard(event) {
+  const card = document.createElement("article");
+  card.className = "event-card";
 
-// Shows only the cards of a category – or all cards for an empty category
+  const title = document.createElement("h2");
+  title.textContent = event.title;
+
+  const meta = document.createElement("p");
+  meta.className = "event-meta";
+  const time = document.createElement("time");
+  time.dateTime = event.date;
+  time.textContent = event.dateLabel;
+  meta.append(time, ` · ${event.location}`);
+
+  const badgeLine = document.createElement("p");
+  const badge = document.createElement("span");
+  badge.className = "category-badge";
+  badge.textContent = event.categoryLabel;
+  badgeLine.append(badge);
+
+  const teaser = document.createElement("p");
+  teaser.textContent = event.teaser;
+
+  const linkLine = document.createElement("p");
+  const link = document.createElement("a");
+  link.className = "button";
+  link.href = `events/${event.id}.html`;
+  link.textContent = "View details";
+  linkLine.append(link);
+
+  card.append(title, meta, badgeLine, teaser, linkLine);
+  return card;
+}
+
+// Replaces all cards on the page with the cards for the given events
+function renderEvents(list) {
+  const cards = list.map((event) => createCard(event));
+  eventList.replaceChildren(...cards);
+  emptyMessage.hidden = list.length > 0;
+}
+
+// The filter now works with the data: filter the array, then render again
 function showCategory(category) {
-  let visibleCount = 0;
-
-  for (const card of cards) {
-    const matches = category === "" || card.dataset.category === category;
-    card.hidden = !matches;
-    if (matches) {
-      visibleCount++;
-    }
-  }
-
-  emptyMessage.hidden = visibleCount > 0;
+  renderEvents(filterByCategory(events, category));
 }
 
 categorySelect.addEventListener("change", (event) => {
@@ -49,12 +81,9 @@ filterForm.addEventListener("submit", (event) => {
   showCategory(categorySelect.value);
 });
 
-// Step 14: load the data and show it in the console
 async function init() {
-  console.log("1: before loading");
   events = await loadEvents();
-  console.log(`3: ${events.length} events loaded from the server`);
+  renderEvents(events);
 }
 
 init();
-console.log("2: after calling init()");
