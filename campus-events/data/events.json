@@ -1,0 +1,26 @@
+[
+  {
+    "id": "photo-walk",
+    "title": "Photo Walk Through the Old Town",
+    "category": "photography",
+    "categoryLabel": "Photography",
+    "date": "2026-10-24T15:00",
+    "dateLabel": "Saturday, 24 October 2026, 3:00 pm",
+    "location": "Marienplatz",
+    "teaser": "Capture the old town in the late afternoon light. All cameras welcome, smartphones included.",
+    "spots": 20,
+    "spotsLeft": 8
+  },
+  {
+    "id": "hiking-trip",
+    "title": "Day Hike to the Herzogstand",
+    "category": "outdoor",
+    "categoryLabel": "Outdoor",
+    "date": "2026-11-07T08:00",
+    "dateLabel": "Saturday, 7 November 2026, 8:00 am",
+    "location": "Munich Central Station",
+    "teaser": "A moderate hike with views over Lake Walchensee. We travel together by train.",
+    "spots": 15,
+    "spotsLeft": 3
+  }
+]
