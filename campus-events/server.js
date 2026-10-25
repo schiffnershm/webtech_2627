@@ -97,10 +97,16 @@ const server = createServer(async (request, response) => {
     await new Promise((resolve) => setTimeout(resolve, Math.min(delay, 10000)));
   }
 
-  if (url.pathname.startsWith("/api/")) {
-    await handleApi(request, url, response);
-  } else {
-    await serveFile(url, response);
+  try {
+    if (url.pathname.startsWith("/api/")) {
+      await handleApi(request, url, response);
+    } else {
+      await serveFile(url, response);
+    }
+  } catch (error) {
+    // For example invalid JSON in events.json: answer with 500 instead of crashing
+    console.error(error);
+    sendJson(response, 500, { error: "Internal server error" });
   }
 });
 
