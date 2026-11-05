@@ -32,7 +32,8 @@ async function loadEvents() {
   return JSON.parse(text);
 }
 
-// GET /api/events, GET /api/events/:id – and /api/broken to practice error handling
+// GET /api/events, GET /api/events/:id – and /api/broken to practice error handling.
+// Step 17: /api/events?category=… filters on the server.
 async function handleApi(request, url, response) {
   if (request.method !== "GET") {
     sendJson(response, 405, { error: "This API is read-only" });
@@ -46,8 +47,13 @@ async function handleApi(request, url, response) {
 
   const events = await loadEvents();
 
+  // GET /api/events?category=outdoor returns only the events of one category
   if (url.pathname === "/api/events") {
-    sendJson(response, 200, events);
+    const category = url.searchParams.get("category");
+    const result = category
+      ? events.filter((event) => event.category === category)
+      : events;
+    sendJson(response, 200, result);
     return;
   }
 
