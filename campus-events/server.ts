@@ -1,9 +1,9 @@
 // Campus Events – a small server for the course.
 // It delivers the files in public/ and the event data as JSON.
-// For now, just run it with: node server.js
-// We look inside this file in lecture 6.
+// Step 19: written in TypeScript. Start with: npm start
+// Check the types with: npm run typecheck
 
-import { createServer } from "node:http";
+import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 
@@ -11,7 +11,8 @@ const PORT = 3000;
 const PUBLIC_DIR = join(import.meta.dirname, "public");
 const DATA_FILE = join(import.meta.dirname, "data", "events.json");
 
-const CONTENT_TYPES = {
+// A lookup table: file extension → Content-Type
+const CONTENT_TYPES: Record<string, string> = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -21,20 +22,38 @@ const CONTENT_TYPES = {
   ".svg": "image/svg+xml",
 };
 
-function sendJson(response, status, data) {
+// The shape of one event in data/events.json
+interface CampusEvent {
+  id: string;
+  title: string;
+  category: string;
+  categoryLabel: string;
+  date: string;
+  dateLabel: string;
+  location: string;
+  teaser: string;
+  spots: number;
+  spotsLeft: number;
+}
+
+function sendJson(response: ServerResponse, status: number, data: unknown): void {
   response.writeHead(status, { "Content-Type": CONTENT_TYPES[".json"] });
   response.end(JSON.stringify(data, null, 2));
 }
 
 // The data is read on every request – changes to events.json show up after a reload
-async function loadEvents() {
+async function loadEvents(): Promise<CampusEvent[]> {
   const text = await readFile(DATA_FILE, "utf-8");
   return JSON.parse(text);
 }
 
 // GET /api/events, GET /api/events/:id – and /api/broken to practice error handling.
 // Step 17: /api/events?category=… filters on the server.
-async function handleApi(request, url, response) {
+async function handleApi(
+  request: IncomingMessage,
+  url: URL,
+  response: ServerResponse,
+): Promise<void> {
   if (request.method !== "GET") {
     sendJson(response, 405, { error: "This API is read-only" });
     return;
@@ -72,7 +91,7 @@ async function handleApi(request, url, response) {
 }
 
 // Everything else: a file from public/
-async function serveFile(url, response) {
+async function serveFile(url: URL, response: ServerResponse): Promise<void> {
   const path = url.pathname === "/" ? "/index.html" : decodeURIComponent(url.pathname);
   const filePath = normalize(join(PUBLIC_DIR, path));
 
@@ -94,7 +113,7 @@ async function serveFile(url, response) {
 }
 
 const server = createServer(async (request, response) => {
-  const url = new URL(request.url, `http://${request.headers.host}`);
+  const url = new URL(request.url ?? "/", `http://${request.headers.host}`);
   console.log(`${request.method} ${url.pathname}${url.search}`);
 
   // ?delay=2000 makes the server wait two seconds – to see the loading state
