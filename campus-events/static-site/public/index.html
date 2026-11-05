@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campus Events</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="site-name"><a href="index.html">Campus Events</a></p>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Events</a></li>
+          <li><a href="clubs.html">Clubs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Upcoming events</h1>
+      <p>Find out what student clubs are planning and sign up for the events you like.</p>
+
+      <!-- The filter only changes the URL (?category=...). Nothing evaluates it yet. -->
+      <form class="filter-form" method="get">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option value="">All categories</option>
+          <option value="outdoor">Outdoor</option>
+          <option value="photography">Photography</option>
+          <option value="tech">Tech</option>
+        </select>
+        <button class="button" type="submit">Filter events</button>
+      </form>
+
+      <!-- The cards are created by js/app.js from the data in data/events.json -->
+      <p class="status-message loading-message" hidden>Loading events …</p>
+      <p class="status-message error-message" hidden>The events could not be loaded. Please try again later.</p>
+      <div class="event-list"></div>
+
+      <noscript>
+        <p class="status-message">Please enable JavaScript to see the events.</p>
+      </noscript>
+
+      <p class="empty-state" hidden>No events in this category yet.</p>
+    </main>
+
+    <footer class="site-footer">
+      <p>Campus Events – a sample project for the course Web Technologies</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Day Hike to the Herzogstand – Campus Events</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="site-name"><a href="../index.html">Campus Events</a></p>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="../index.html">Events</a></li>
+          <li><a href="../clubs.html">Clubs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <article class="event-detail">
+        <h1>Day Hike to the Herzogstand</h1>
+        <img src="../images/hiking-trip.jpg" width="600" height="338"
+             alt="Illustration of a mountain range with a snowy peak above a green valley">
+
+        <p>
+          A moderate day hike with about 800 meters of ascent and views over Lake Walchensee.
+          We travel together by train and stop for lunch at the mountain hut.
+          Bring sturdy shoes, rain gear and enough water.
+        </p>
+
+        <h2>Details</h2>
+        <dl class="event-facts">
+          <dt>Date</dt>
+          <dd><time datetime="2026-11-07T08:00">Saturday, 7 November 2026, 8:00 am</time></dd>
+          <dt>Meeting point</dt>
+          <dd>Munich Central Station, platform 27</dd>
+          <dt>Organizer</dt>
+          <dd><a href="../clubs.html#alpine-wanderers">Alpine Wanderers</a></dd>
+          <dt>Spots</dt>
+          <dd>15 (3 left)</dd>
+        </dl>
+
+        <h2>Sign up</h2>
+        <form class="signup-form" action="/registrations" method="post">
+          <p class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+          </p>
+          <p class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </p>
+          <p class="form-field">
+            <label for="program">Study program</label>
+            <select id="program" name="program">
+              <option value="computer-science">Computer Science</option>
+              <option value="business-informatics">Business Informatics</option>
+              <option value="design">Design</option>
+              <option value="other">Other</option>
+            </select>
+          </p>
+          <p class="form-check">
+            <input id="privacy" name="privacy" type="checkbox" required>
+            <label for="privacy">I agree that my name and email are shared with the organizer.</label>
+          </p>
+          <input type="hidden" name="event" value="hiking-trip">
+          <button class="button" type="submit">Sign up</button>
+        </form>
+      </article>
+
+      <p><a href="../index.html">Back to all events</a></p>
+    </main>
+
+    <footer class="site-footer">
+      <p>Campus Events – a sample project for the course Web Technologies</p>
+    </footer>
+  </body>
+</html>

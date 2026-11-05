@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo Walk Through the Old Town – Campus Events</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="site-name"><a href="../index.html">Campus Events</a></p>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="../index.html">Events</a></li>
+          <li><a href="../clubs.html">Clubs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <article class="event-detail">
+        <h1>Photo Walk Through the Old Town</h1>
+        <img src="../images/photo-walk.jpg" width="600" height="338"
+             alt="Illustration of a city skyline at sunset with an orange sky">
+
+        <p>
+          Join us for a relaxed walk through the old town in the late afternoon light.
+          We stop at a few spots with great views and share tips on composition and light.
+          Any camera works, including your smartphone.
+        </p>
+
+        <h2>Details</h2>
+        <dl class="event-facts">
+          <dt>Date</dt>
+          <dd><time datetime="2026-10-24T15:00">Saturday, 24 October 2026, 3:00 pm</time></dd>
+          <dt>Meeting point</dt>
+          <dd>Marienplatz, in front of the town hall</dd>
+          <dt>Organizer</dt>
+          <dd><a href="../clubs.html#shutter-society">Shutter Society</a></dd>
+          <dt>Spots</dt>
+          <dd>20 (8 left)</dd>
+        </dl>
+
+        <h2>Sign up</h2>
+        <!-- POST to a static server: python3 -m http.server answers with 501. -->
+        <form class="signup-form" action="/registrations" method="post">
+          <p class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+          </p>
+          <p class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </p>
+          <p class="form-field">
+            <label for="program">Study program</label>
+            <select id="program" name="program">
+              <option value="computer-science">Computer Science</option>
+              <option value="business-informatics">Business Informatics</option>
+              <option value="design">Design</option>
+              <option value="other">Other</option>
+            </select>
+          </p>
+          <p class="form-check">
+            <input id="privacy" name="privacy" type="checkbox" required>
+            <label for="privacy">I agree that my name and email are shared with the organizer.</label>
+          </p>
+          <input type="hidden" name="event" value="photo-walk">
+          <button class="button" type="submit">Sign up</button>
+        </form>
+      </article>
+
+      <p><a href="../index.html">Back to all events</a></p>
+    </main>
+
+    <footer class="site-footer">
+      <p>Campus Events – a sample project for the course Web Technologies</p>
+    </footer>
+  </body>
+</html>
